@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mRemoteNG Decrypter</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa; /* Bootstrap default background color */
+        }
+        .container {
+            max-width: 400px;
+            margin-top: 20px;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: #007bff;
+            margin-right: 10px;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <img src="https://www.khaledagn.com/wp-content/uploads/2023/10/khaledagn-1.png" alt="Logo" class="logo">
+        </div>
+        <h1 class="text-center mb-4">Upload XML File</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="customFile" name="file" accept=".xml" onchange="showFileName()">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (optional, if file is encrypted):</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+        </form>
+        <div class="copyright">
+            <p>&copy; 2024 Khaled AGN. All rights reserved.</p>
+             <a href="https://github.com/khaledagn/mRemoteNG_Decrypter" target="_blank">GitHub Repo</a>
+        </div>
+        
+
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showFileName() {
+            var input = document.getElementById('customFile');
+            var fileName = input.files[0].name;
+            var fileExtension = fileName.split('.').pop();
+            var newFileName = fileName.split('.').slice(0, -1).join('.')  + '.' + fileExtension;
+            input.nextElementSibling.innerText = newFileName;
+        }
+    </script>
+</body>
+</html>
